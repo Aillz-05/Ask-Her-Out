@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes/No Question</title>
+    <style>
+        h2 {
+            color: darkred;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>What's the date today?</h1>
+    <input type="date" id="dateInput">
+    <button onclick="showPage('Submit')">Submit</button>
+
+    <div id="Submit" class="hidden">
+        <h2>Hmmmm so Valentine's is tomorrow?</h2>
+        <!-- Add content for the "Submit" page here -->
+        <button onclick="showPage('Yes')">Yes</button>
+        <button onclick="showPage('No')">No</button>
+    </div>
+
+    <div id="Yes" class="hidden">
+        <h2>so are you free tommorow?</h2>
+        <!-- Add content for the "Yes" page here -->
+        <button onclick="showPage('SecondYes')">Yes</button>
+        <button onclick="showPage('SecondNo')">No</button>
+    </div>
+
+    <div id="No" class="hidden">
+        <h2>ah my bad</h2>
+        <!-- Add content for the "No" page here -->
+    </div>
+
+    <div id="SecondYes" class="hidden">
+        <h2>Awesome! Let's plan something special</h2>
+        <!-- Add content for the second "Yes" page here -->
+    </div>
+
+    <div id="SecondNo" class="hidden">
+        <h2>No worries! Maybe some other time.</h2>
+        <!-- Add content for the second "No" page here -->
+    </div>
+
+    <script>
+        function showPage(answer) {
+            if (answer === 'Submit') {
+                var dateInput = document.getElementById('dateInput').value;
+                if (dateInput !== '') {
+                    document.getElementById('Submit').style.display = 'block';
+                } else {
+                    alert('Please enter a date before submitting.');
+                }
+            } else if (answer === 'Yes' || answer === 'No') {
+                document.getElementById('Yes').style.display = answer === 'Yes' ? 'block' : 'none';
+                document.getElementById('No').style.display = answer === 'No' ? 'block' : 'none';
+            } else if (answer === 'SecondYes' || answer === 'SecondNo') {
+                document.getElementById('SecondYes').style.display = answer === 'SecondYes' ? 'block' : 'none';
+                document.getElementById('SecondNo').style.display = answer === 'SecondNo' ? 'block' : 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
+
